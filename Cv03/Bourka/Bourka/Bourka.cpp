@@ -7,9 +7,13 @@ using namespace std;
 
 int main()
 {
-	double cas;
+	float cas;
 	const double rychlost_zvuku = 340;
 
-	//scanf_s("Zadej cas : %fl", &cas);
+	printf("Kolik sekund jsi napocital potom, co blesk uhodil?: ");
+	scanf_s("%fl", &cas);
+
+	printf("Blesk je daleko: %lf\n", cas*rychlost_zvuku);
+
 	return 0;
 }
