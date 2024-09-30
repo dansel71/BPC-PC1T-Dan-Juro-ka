@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/student/Downloads/CV03 (1)/FunExt
+# Install script for directory: C:/Users/student/BPC-PC1T-Dan-Juro-ka/Cv03/FunExt
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/student/Downloads/CV03 (1)/FunExt/out/install/x64-debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/student/BPC-PC1T-Dan-Juro-ka/Cv03/FunExt/out/install/x64-debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/student/Downloads/CV03 (1)/FunExt/out/build/x64-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/student/BPC-PC1T-Dan-Juro-ka/Cv03/FunExt/out/build/x64-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
