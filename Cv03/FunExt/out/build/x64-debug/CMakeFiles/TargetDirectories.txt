@@ -1,3 +1,0 @@
-C:/Users/student/BPC-PC1T-Dan-Juro-ka/Cv03/FunExt/out/build/x64-debug/CMakeFiles/FunExt.dir
-C:/Users/student/BPC-PC1T-Dan-Juro-ka/Cv03/FunExt/out/build/x64-debug/CMakeFiles/edit_cache.dir
-C:/Users/student/BPC-PC1T-Dan-Juro-ka/Cv03/FunExt/out/build/x64-debug/CMakeFiles/rebuild_cache.dir
