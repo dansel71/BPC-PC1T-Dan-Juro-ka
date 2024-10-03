@@ -7,8 +7,8 @@ using namespace std;
 
 int main()
 {
-    double maxY = DBL_MAX;
-    int maxX = INT_MAX;
+    double maxY = DBL_MIN;
+    int maxX = INT_MIN;
     for (int x = 10; x <= 20; ++x)
     {
         double y = 5 - 3 * x + 2 * (x - 5) * (x - 5) - (x - 10) * (x - 10) * (x - 10);
