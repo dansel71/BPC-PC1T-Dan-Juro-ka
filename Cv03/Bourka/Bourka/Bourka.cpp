@@ -13,7 +13,7 @@ int main()
 	printf("Kolik sekund jsi napocital potom, co blesk uhodil?: ");
 	scanf_s("%fl", &cas);
 
-	printf("Blesk je daleko: %lf\n", cas*rychlost_zvuku);
+	printf("Blesk je daleko: %lf metru", cas*rychlost_zvuku);
 
 	return 0;
 }
