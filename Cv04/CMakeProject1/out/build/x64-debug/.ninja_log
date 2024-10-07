@@ -1,0 +1,15 @@
+# ninja log v5
+6	41	7500107743142561	CMakeFiles/CMakeProject1.dir/jePrestupny.cpp.obj	83d62aeed3029ea8
+2	585	7500107748655690	CMakeFiles/CMakeProject1.dir/CMakeProject1.cpp.obj	55ef0328a02b4d3
+586	687	7500107749445051	CMakeProject1.exe	fd7f6ae7723c0282
+11	48	7500110633266381	CMakeFiles/CMakeProject1.dir/jePrestupny.cpp.obj	83d62aeed3029ea8
+7	582	7500110638595119	CMakeFiles/CMakeProject1.dir/CMakeProject1.cpp.obj	55ef0328a02b4d3
+582	691	7500110639377721	CMakeProject1.exe	fd7f6ae7723c0282
+10	576	7500111841404376	CMakeFiles/CMakeProject1.dir/CMakeProject1.cpp.obj	55ef0328a02b4d3
+576	699	7500111842510705	CMakeProject1.exe	fd7f6ae7723c0282
+9	574	7500112410065986	CMakeFiles/CMakeProject1.dir/CMakeProject1.cpp.obj	55ef0328a02b4d3
+574	672	7500112410851510	CMakeProject1.exe	fd7f6ae7723c0282
+10	585	7500112972329434	CMakeFiles/CMakeProject1.dir/CMakeProject1.cpp.obj	55ef0328a02b4d3
+586	688	7500112973118337	CMakeProject1.exe	fd7f6ae7723c0282
+10	45	7500114045077933	CMakeFiles/CMakeProject1.dir/jePrestupny.cpp.obj	83d62aeed3029ea8
+46	129	7500114045702981	CMakeProject1.exe	fd7f6ae7723c0282
