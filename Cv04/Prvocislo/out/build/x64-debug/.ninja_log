@@ -1,2 +1,5 @@
 # ninja log v5
-5	44	7500122773748402	CMakeFiles/Prvocislo.dir/IsPrime.cpp.obj	573e33c6923d7357
+4	978	7500752933053527	CMakeFiles/Prvocislo.dir/Prvocislo.cpp.obj	57b53a76cd6e6436
+980	1501	7500752937989927	Prvocislo.exe	d157619c6d8a1b54
+6	1034	7500754545322972	CMakeFiles/Prvocislo.dir/Prvocislo.cpp.obj	57b53a76cd6e6436
+1035	1341	7500754547787537	Prvocislo.exe	d157619c6d8a1b54

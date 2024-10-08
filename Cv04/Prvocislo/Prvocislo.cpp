@@ -2,17 +2,25 @@
 //
 
 #include "Prvocislo.h"
-#include "IsPrime.h"
 
 using namespace std;
 
-int main()
-{
-	int a;
-	// Test fce
-		for (int i = 0; i <= 100; i + 1) {
-			if (IsPrime(i) == 1);
-			printf("%d", i);
-	}
-	return 0;
+// Funkce pro kontrolu, zda je číslo prvočíslo
+int jePrvocislo(int cislo) {
+    if (cislo < 1 or cislo > 100) return -1;
+    if (cislo == 1) return false;
+    for (int i = 2; i * i <= cislo; i++) {
+        if (cislo % i == 0) return false;
+    }
+    return true;
+}
+
+
+int main() {
+    int a;
+    printf("Zadej cislo od 1 do 100:");
+    scanf("%d", &a);
+    printf("Zadane cislo: %d\n", jePrvocislo(a));
+    printf("\n");
+    return 0;
 }
