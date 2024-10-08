@@ -1,5 +1,9 @@
 # ninja log v5
-4	978	7500752933053527	CMakeFiles/Prvocislo.dir/Prvocislo.cpp.obj	57b53a76cd6e6436
-980	1501	7500752937989927	Prvocislo.exe	d157619c6d8a1b54
-6	1034	7500754545322972	CMakeFiles/Prvocislo.dir/Prvocislo.cpp.obj	57b53a76cd6e6436
+3	1132	7500765927121559	CMakeFiles/Prvocislo.dir/Prvocislo.cpp.obj	57b53a76cd6e6436
 1035	1341	7500754547787537	Prvocislo.exe	d157619c6d8a1b54
+17	422	7500764086996177	CMakeFiles/Prvocislo.dir/jePrvocislo.cpp.obj	4880a8b0a3fc0a49
+3	171	7500766742025778	build.ninja	a0187504206ff0f0
+12	1152	7500769034257465	CMakeFiles/Prvocislo.dir/jePrvocislo.cpp.obj	4880a8b0a3fc0a49
+12	117	7500770891835241	CMakeFiles/Prvocislo.dir/jePrvocislo.cpp.obj	4880a8b0a3fc0a49
+4	1030	7500770900932298	CMakeFiles/Prvocislo.dir/Prvocislo.cpp.obj	57b53a76cd6e6436
+1031	1384	7500770903637817	Prvocislo.exe	bea00c394e0b9b65

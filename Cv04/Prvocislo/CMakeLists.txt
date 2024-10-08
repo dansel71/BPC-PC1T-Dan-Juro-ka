@@ -12,7 +12,7 @@ endif()
 project ("Prvocislo")
 
 # Přidejte zdrojový kód ke spustitelnému souboru tohoto projektu.
-add_executable (Prvocislo "Prvocislo.cpp" "Prvocislo.h"  )
+add_executable (Prvocislo "Prvocislo.cpp" "Prvocislo.h" "jePrvocislo.cpp" "jePrvocislo.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Prvocislo PROPERTY CXX_STANDARD 20)
