@@ -1,0 +1,9 @@
+# ninja log v5
+6	44	7506136057402792	CMakeFiles/Funkce.dir/soucet.cpp.obj	6ad47fe8bc4be144
+2	593	7506155300436244	CMakeFiles/Funkce.dir/Funkce.cpp.obj	c7642206d0b1aab9
+9	52	7506155295101817	CMakeFiles/Funkce.dir/skalarniSoucin.cpp.obj	d1f989ededc8784a
+593	713	7506155301380833	Funkce.exe	ec3700810c152fe0
+6	58	7506155295101817	CMakeFiles/Funkce.dir/velikost.cpp.obj	e6960e4838f8af0c
+5	304	7506165431082461	CMakeFiles/Funkce.dir/vektorovySoucin.cpp.obj	983b5c39c2537875
+2	832	7506165436265921	CMakeFiles/Funkce.dir/Funkce.cpp.obj	c7642206d0b1aab9
+833	950	7506165437207825	Funkce.exe	5dbdd9e3ba378178
