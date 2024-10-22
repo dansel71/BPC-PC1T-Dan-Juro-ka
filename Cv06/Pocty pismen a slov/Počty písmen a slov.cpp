@@ -22,11 +22,27 @@ int PocetCislic(char* text) {
 	return vysledek;
 }
 
-int DelkySlov(char* text) {
-	typedef int slova [][2];;
-        printf("\n");
-        return 0;
+void DelkySlov(char* text) {
+	int delkaslova = 0;
+	int poprve = 0;
+	while (*text) {
+		if (isalpha(*text)) {
+			++delkaslova;
+		}
+		else {
+			if (delkaslova != 0) {
+				if (poprve == 0) {
+					printf("%d", delkaslova);
+					poprve = 1;
+				} else {
+					printf(", %d", delkaslova);
+				}
+			}
+			delkaslova = 0;	
+		}
+	text++;
 	}
+}
 	
 
 int main() {
@@ -36,7 +52,8 @@ int main() {
 	printf("\n");
 	printf("Pocet pismen: %d.\n", PocetPismen(text));
 	printf("Pocet cislic: %d.\n", PocetCislic(text));
-	printf("Delky slov: %d.\n", DelkySlov(text));
+	printf("Delky slov: ");
+	DelkySlov(text);
 
 	return 0;
 }
