@@ -9,25 +9,26 @@
 
 using namespace std;
 
-struct vector3d
-{
-	double x;
-	double y;
-	double z;
-};
-
 int main()
 {
 	struct vector3d u;
 	struct vector3d v;
 	enum typOperace jakaOperace;
-	printf ("Zadejte vektor u (hodnoty x, y, z oddelene carkou):");
+	enum typOsy osa;
+	printf("Zadejte vektor u (hodnoty x, y, z oddelene carkou):");
 	scanf_s("%lf, %lf, %lf", &u.x, &u.y, &u.z);
 	printf("\nZadejte vektor v (hodnoty x, y, z oddelene carkou):");
 	scanf_s("%lf, %lf, %lf", &v.x, &v.y, &v.z);
-	printf("\nZadejte operaci (1 = soucet, 2 = vektorovySoucin): ");
-	scanf_s("%lf", &jakaOperace);
-	struct vector3d operace(struct vector3d u, struct vector3d v, typOperace jakaOperace);
-	void tisk(struct vector3d u);
-	return 0;
+	printf("\nZadejte operaci (1 = soucet, 2 = vektorovySoucin, 3 = rotace): ");
+	scanf_s("%d", &jakaOperace);
+	if (jakaOperace == 3) {
+		printf("\nZadejte osu, podle ktere bude vektor rotovat (1 = x, 2 = y, 3 = z):");
+		scanf_s("%d", &osa);
+		rotuj(&u, osa);
+	}
+	else {// Píšu if, abych mohl oddelit operace soucet a soucin od operace rotuj protoze je nutne zadat hodnoty jinym zpusobem
+		u = operace(u, v, jakaOperace);
+		tisk(u);
+		return 0;
+	}
 }
