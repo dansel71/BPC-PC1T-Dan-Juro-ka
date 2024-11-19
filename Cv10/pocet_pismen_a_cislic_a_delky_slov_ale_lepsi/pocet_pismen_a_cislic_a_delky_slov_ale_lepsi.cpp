@@ -10,8 +10,9 @@ using namespace std;
 
 int PocetPismen(char* text) {
 	int vysledek = 0;
-	while (*(++text) != '\0') {
+	while (*text != '\0') {
 		if (isalpha(*text)) ++vysledek;
+		++text;
 	}
 	return vysledek;
 }
@@ -24,7 +25,7 @@ int PocetCislic(char* text) {
 	return vysledek;
 }
 
-void DelkySlov(char* text) {
+int DelkySlov(char* text) {
 	int delkaslova = 0;
 	int poprve = 0;
 	while (*text) {
@@ -45,6 +46,7 @@ void DelkySlov(char* text) {
 		}
 		text++;
 	}
+	return 0;
 }
 
 
@@ -57,7 +59,6 @@ int main()
 	fopen_s(&vstup, CestaVstup, "r");
 	char text;
 	long length;
-	char c;
 
 	// Přejdeme na konec souboru, abychom zjistili jeho velikost
 	fseek(vstup, 0, SEEK_END);
@@ -72,11 +73,11 @@ int main()
 	text[&length] = '\0';  // Přidání nulového terminátoru na konec řetězce
 
 	printf("Testovany text zde:\n");
+	printf(&text);
 	printf("\n");
 	printf_s("Pocet pismen: %d.\n", PocetPismen(&text));
 	printf_s("Pocet cislic: %d.\n", PocetCislic(&text));
 	printf_s("Delky slov: ");
 	DelkySlov(&text);
-
 	return 0;
-}
+}// Nevím, proč to na konci napíše, že je lenght a text corrupted, ale funguje to přesně tak, jak má...
