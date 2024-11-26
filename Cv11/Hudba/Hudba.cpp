@@ -9,7 +9,7 @@
 
 #include "HudbaDB.h"
 
-struct t_album* prvni = NULL; // globalni ukazatel na prvni auto
+struct t_album* prvni = NULL; // globalni ukazatel na prvni album
 
 void OnAdd()
 {
@@ -41,14 +41,25 @@ void OnDel()
 
 void ShowAlbums()
 {
-	struct t_album* aktAlbum = prvni; // ukazatel na aktualni auto
-	printf("\n\n");
+	struct t_album* aktAlbum = prvni; // ukazatel na aktualni album
+	char pocatecniPismeno;
+
+	printf("Zadejte pocatecni pismeno interpreta: ");
+	scanf(" %c", &pocatecniPismeno); // ziskani vstupu od uzivatele
+	getchar(); // odstraneni nového řádku ze vstupního bufferu
+	pocatecniPismeno = tolower(pocatecniPismeno); // převedení na malé písmeno pro porovnání
+
+	printf("\nSeznam alb:\n");
 	while (aktAlbum) // prochazeni seznamu
 	{
-		printf("%d: %s, %s\n", aktAlbum->rok, aktAlbum->interpret, aktAlbum->name); // tisk radku
-		aktAlbum = aktAlbum->dalsi; // posun na dalsi auto
+		// kontrola, zda jméno interpreta začíná zadaným písmenem (case-insensitive)
+		if (tolower(aktAlbum->interpret[0]) == pocatecniPismeno)
+		{
+			printf("%d: %s, %s\n", aktAlbum->rok, aktAlbum->interpret, aktAlbum->name); // tisk radku
+		}
+		aktAlbum = aktAlbum->dalsi; // posun na dalsi album
 	}
-	getchar();
+	getchar(); // cekani na vstup pro zastaveni
 }
 
 

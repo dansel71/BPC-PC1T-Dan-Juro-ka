@@ -54,19 +54,19 @@ void del(int rok, struct t_album** uk_prvni)
 	while (*uk_prvni && (*uk_prvni)->rok == rok)
 	{
 		struct t_album* newPrvni = (*uk_prvni)->dalsi;
-		free(*uk_prvni);  // uvolneni auta z pameti
+		free(*uk_prvni);  // uvolneni alba z pameti
 		*uk_prvni = newPrvni;
 	}
 
 	aktAlbum = *uk_prvni;
 	while (aktAlbum && aktAlbum->dalsi) // prochazeni seznamu
 	{
-		if (aktAlbum->dalsi->rok == rok) // auto je ke smazani
+		if (aktAlbum->dalsi->rok == rok) // album je ke smazani
 		{
 			struct t_album* newDalsi = aktAlbum->dalsi->dalsi;
-			free(aktAlbum->dalsi);  // uvolneni auta z pameti
+			free(aktAlbum->dalsi);  // uvolneni alba z pameti
 			aktAlbum->dalsi = newDalsi;
 		}
-		aktAlbum = aktAlbum->dalsi; // posun na dalsi auto
+		aktAlbum = aktAlbum->dalsi; // posun na dalsi album
 	}
 }
