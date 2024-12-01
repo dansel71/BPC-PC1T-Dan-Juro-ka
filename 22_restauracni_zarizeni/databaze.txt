@@ -1,0 +1,27 @@
+
+Bar Bar
+	4	
+Delnak
+	4	Dobra Plzen
+	4	Super obsluha a levne jidlo, ktere neni az tak super.
+Ichy Bar
+	3	Pajzl pro smazky
+Jidelna K2
+Kebab House
+	4	Kebabova Klasika
+Mystica
+	4	Super misto, ale plno lidi
+	5	Dobre pivo a hromada deskovych her
+Na Pulce
+Pizzerie Toscanna
+	4	Slusna pizza, ale zrusili rozvoz
+Pod Lekarnou
+	5	Spousta piva za super ceny
+Restaurace La Festin
+	5	Prvni italska kuchyne, kde nedelaji pizzu. A stoji to za to.
+U Krbu
+U Krizovatky
+Utopia
+	4	Nadherne misto, kde ale maji problem s obsluhou
+Vacikov
+	5	Vesnicka hospudka, kde ale kvalita domaciho jidla ani priznive ceny nezklamou
