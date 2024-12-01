@@ -7,92 +7,22 @@
 #include "macros.h"
 
 
-/*
-
-
-
-// ------------------------------------------------------------------
-typedef struct MenuItem {
-    char name[MAX_NAME_LEN];
-    double price;
-    struct MenuItem* next;
-} MenuItem;
-
-MenuItem* createMenuItem(const char* name) {
-    MenuItem* newItem = (MenuItem*)malloc(sizeof(MenuItem));
-    strcpy(newItem->name, name);
-    newItem->next = NULL;
-    return newItem;
-}
-
-
-
-/*
-void addRestaurant(Restaurant** head, char* name) {
-    Restaurant* new_restaurant = createRestaurant(name);
-    new_restaurant->next = *head;
-    *head = new_restaurant;
-    system("cls");
-    printf("Restaurace %s byla pridana.\n", name);
-}
-
-Restaurant* createRestaurant(char* name) {
-    Restaurant* new_restaurant = (Restaurant*)malloc(sizeof(Restaurant));
-    strcpy(new_restaurant->name, name);
-    new_restaurant->reviews = NULL;
-    new_restaurant->next = NULL;
-    return new_restaurant;
-}
-
-
-
-
-// add menu to restaurant
-void addMenuItem(Restaurant* restaurant) {
-    if (restaurant == NULL) {
-        printf("Restaurace nebyla nalezena.\n");
-        return;
-    }
-
-    struct Restaurant* restaurant;
-
-    char itemName[MAX_NAME_LEN];
-    double price;
-    printf("Zadejte název jídla: ");
-    scanf_s(" %[^\n]", itemName);
-    printf("Zadejte cenu jídla: ");
-    scanf_s("%lf", &price);
-
-    MenuItem* newItem = createMenuItem(itemName);
-    if (newItem == NULL) {
-        return;
-    }
-    
-    ;
-   }
- 
-*/
-//--------------------------------------------------------------------
-
-
-
-
-
 
 int main() {
     Restaurant* restaurants = NULL;
-    Restaurant* restaurant = NULL;  // Deklarace proměnné před switch
+    Restaurant* restaurant = NULL;  // Deklarace promenne pred switch
 
     int choice;
     char name[MAX_NAME_LEN];
     int rating;
     char comment[MAX_COMMENT_LEN];
-   
+
     loadDatabase(&restaurants);
-    sortRestaurantsAlphabetically(&restaurants); // Na začátku se restaurace pokaždé seřadí, aby se zabránilo převrácení seznamu vzůru nohama
+    sortRestaurantsAlphabetically(&restaurants); // Na zacatku se restaurace pokazde seradi, aby se zabranilo prevraceni seznamu vzhuru nohama:p
 
     do {
-        
+        //printAscii();
+
         printf("\n1. Pridat restauraci\n");
         printf("2. Odstranit restauraci\n");
         printf("3. Pridat hodnoceni\n");
@@ -101,7 +31,7 @@ int main() {
         printf("6. Radit podle hodnoceni\n");
         printf("0. Ulozit a ukoncit\n\n");
         printf("Vyberte moznost: ");
-        if ((scanf("%d", &choice)) == 1) { // Skenuje hodnotu choice a zároveň filtruje písmena
+        if ((scanf("%d", &choice)) == 1) { // Skenuje hodnotu choice a zaroven filtruje pismena
             getchar();
 
             switch (choice) {
@@ -115,14 +45,9 @@ int main() {
                 printf("Zadejte nazev restaurace: ");
                 int x = 0;
                 fgets(name, MAX_NAME_LEN, stdin);
-                /*    if (strcmp(&restaurants->name[0], name) == 0) { // Porovnání řetězců
-                        system("cls");
-                        printf("Restaurace jiz existuje.\n");
-                        break;
-                    }*/
                 name[strcspn(name, "\n")] = '\0';
                 addRestaurant(&restaurants, name, 1);
-                
+
                 break;
             }
             case 2: {
@@ -172,7 +97,6 @@ int main() {
             case 5: {
                 system("cls");
                 sortRestaurantsAlphabetically(&restaurants);
-                //sortRestaurants(restaurants, count);
                 printf("Restaurace byly serazeny podle nazvu.\n");
                 listRestaurants(restaurants);
                 break;
@@ -180,7 +104,6 @@ int main() {
             case 6: {
                 system("cls");
                 sortByRating(&restaurants);
-                //sortRestaurants(restaurants, count);
                 printf("Restaurace byly serazeny podle hodnoceni.\n");
                 listRestaurants(restaurants);
                 break;

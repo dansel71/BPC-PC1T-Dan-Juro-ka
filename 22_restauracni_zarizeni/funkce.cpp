@@ -7,23 +7,26 @@
 #include "funkce.h"
 #include "macros.h"
 
-// Struktura pro hodnocení restaurace
+
+
+
+// Struktura pro hodnoceni restaurace
 typedef struct Review {
-    int review; // Bodové hodnocení (napø. 1-5)
-    char comment[MAX_COMMENT_LEN]; // Slovní komentáø
-    struct Review* next; // Ukazatel na další hodnocení
+    int review; // Bodove hodnoceni 1-5
+    char comment[MAX_COMMENT_LEN]; // Slovni komentar
+    struct Review* next; // Ukazatel na dalsi hodnoceni
 } Review;
 
 // Struktura pro restauraci
 typedef struct Restaurant {
-    char name[MAX_NAME_LEN]; // Název restaurace
-    Review* reviews; // Ukazatel na seznam hodnocení
-    struct Restaurant* next; // Ukazatel na další restauraci
+    char name[MAX_NAME_LEN]; // nazev restaurace
+    Review* reviews; // Ukazatel na seznam hodnoceni
+    struct Restaurant* next; // Ukazatel na dalsi restauraci
     struct menuItem* menu;
 } Restaurant;
 
 
-// Vytvoøení nové restaurace
+// vytvoreni nove restaurace
 Restaurant* createRestaurant(char* name) {
     Restaurant* new_restaurant = (Restaurant*)malloc(sizeof(Restaurant));
     strcpy(new_restaurant->name, name);
@@ -32,13 +35,13 @@ Restaurant* createRestaurant(char* name) {
     return new_restaurant;
 }
 
-// Pøidání restaurace do seznamu
+// pridani restaurace do seznamu
 void addRestaurant(Restaurant** head, char* name, int writeInfo) {
     Restaurant* current = *head;
     while (current != NULL) {
         if (strcmp(current->name, name) == 0) {
             if (writeInfo == 1) {
-                printf("Restaurace %s ji existuje\n", name);
+                printf("Restaurace %s jiz existuje.\n", name);
             }
             return;
         }
@@ -53,7 +56,7 @@ void addRestaurant(Restaurant** head, char* name, int writeInfo) {
     }
 }
 
-// Najdi restauraci podle názvu
+// najdi restauraci podle nazvu
 Restaurant* findRestaurant(Restaurant* head, char* name) {
     while (head != NULL) {
         if (strcmp(head->name, name) == 0) {
@@ -64,12 +67,12 @@ Restaurant* findRestaurant(Restaurant* head, char* name) {
     return NULL;
 }
 
-// Odstranìní restaurace ze seznamu
+// odstraneni restaurace ze seznamu
 void deleteRestaurant(Restaurant** head, char* name) {
     Restaurant* current = *head;
     Restaurant* previous = NULL;
 
-    while (current != NULL && strcmp(current->name, name) != 0) { // Funkce, která vyplní "díru" v seznamu
+    while (current != NULL && strcmp(current->name, name) != 0) { // funkce, ktera vyplni diru v seznamu
         previous = current;
         current = current->next;
     }
@@ -87,7 +90,7 @@ void deleteRestaurant(Restaurant** head, char* name) {
         previous->next = current->next;
     }
 
-    // Uvolnìní pamìti pro hodnocení restaurace
+    // uvolneni pameti pro hodnoceni restaurace
     Review* review = current->reviews;
     while (review != NULL) {
         Review* temp = review;
@@ -101,7 +104,7 @@ void deleteRestaurant(Restaurant** head, char* name) {
 }
 
 
-// Vytvoøení nového hodnocení
+// vytvoreni noveho hodnoceni
 Review* createReview(int rating, char* comment) {
     Review* new_review = (Review*)malloc(sizeof(Review));
     new_review->review = rating;
@@ -110,11 +113,11 @@ Review* createReview(int rating, char* comment) {
     return new_review;
 }
 
-// Pøidání hodnocení k restauraci
+// pridani hodnoceni k restauraci
 void addReview(Restaurant* restaurant, int rating, char* comment, int writeInfo) {
     if (restaurant == NULL) {
         system("cls");
-        printf("Restaurace nebyla nalezena.\n");    
+        printf("Restaurace nebyla nalezena.\n");
         return;
     }
 
@@ -127,7 +130,7 @@ void addReview(Restaurant* restaurant, int rating, char* comment, int writeInfo)
     }
 }
 
-// Vypsání všech restaurací
+// vypsani vsech restauraci
 void listRestaurants(Restaurant* head) {
     printf("Restaurace:\n\n");
     while (head != NULL) {
@@ -143,69 +146,67 @@ void listRestaurants(Restaurant* head) {
 
 //------------------------------------------------------------------
 
-// Funkce pro seøazení restaurací podle názvu
+// funkce pro serazeni restauraci podle nazvu
 void sortRestaurantsAlphabetically(Restaurant** head) {
     if (*head == NULL || (*head)->next == NULL) {
-        return; // Prázdnı nebo jedno-prvkovı seznam, nic k øazení
+        return; // prazdny nebo 1prvkovy seznam, nic k razeni
     }
 
     int swapped;
     Restaurant* current;
     Restaurant* previous = NULL;
-    Restaurant* lptr = NULL; // Oznaèuje konec ji seøazené èásti seznamu
+    Restaurant* lptr = NULL; // oznaczje konec jiz serazene casti seznamu
 
     do {
         swapped = 0;
         current = *head;
         previous = NULL;
 
-        // Procházení seznamu
+        // prochazeni seznamu
         while (current->next != lptr) {
-            // Pokud je jméno aktuálního prvku vìtší ne následujícího, vymìníme je
+            // pokud je jmeno aktualniho prvku vetsi nez nasledujiciho, vymeni se
             if (strcmp(current->name, current->next->name) > 0) {
-                // Pøehodíme ukazatele mezi current a current->next
+                // prehozeni ukazatele mezi current a current->next
 
                 Restaurant* next = current->next;
 
-                // Pokud pøehazujeme na zaèátku seznamu
+                // pokud pprehazuje na zacatku seznamu
                 if (previous == NULL) {
-                    *head = next;  // Aktualizujeme hlavu seznamu
+                    *head = next;  // aktualizujeme hlavu seznamu
                 }
                 else {
-                    previous->next = next;  // Nastavíme pøedchozí uzel tak, aby ukazoval na 'next'
+                    previous->next = next;  // nastavime predchozi uzel tak aby ukazoval na 'next'
                 }
 
-                current->next = next->next;  // Aktuální prvek nyní ukazuje na uzel po 'next'
-                next->next = current;        // 'next' ukazuje na aktuální prvek
+                current->next = next->next;  // aktualni prvek uz ukazuje na uzel po 'next'
+                next->next = current;        // 'next' ukazuje na aktualni prvek
 
-                // Pøehazování ukazatelù je hotové
-                swapped = 1;
+                swapped = 1; // prehazovani ukazatelu je hotove
 
-                // Posuneme previous na 'next' (novı pøedek 'current')
-                previous = next;
+                previous = next;// posuneme previous na 'next' (novy predek 'current')
             }
             else {
-                // Posuneme se dál, pokud nebyla vımìna
+                // posuneme se dal, pokud nebyla vymena
                 previous = current;
                 current = current->next;
             }
         }
-        lptr = current; // Aktualizujeme lptr, poslední prvek je nyní na správném místì
+        lptr = current; // aktualizujeme lptr, posledni prvek je nyni na spravnem miste
     } while (swapped);
 }
 
 
 
-// Funkce pro seøazení restaurací podle hodnocení
+// Funkce pro serazeni restauraci dle hodnoceni
 void sortByRating(Restaurant** head) {
     if (*head == NULL || (*head)->next == NULL) {
-        return; // Prázdnı nebo jedno-prvkovı seznam, nic k øazení
+        return; // prazdny nebo 1prvkovy seznam, neni nic k razeni
     }
 
     int swapped;
     Restaurant* current;
     Restaurant* previous = NULL;
-    Restaurant* lptr = NULL; // Oznaèuje konec ji seøazené èásti seznamu
+    Restaurant* lptr = NULL; // oznacuje konec uz serazene casti seznamu
 
     do {
         swapped = 0;
@@ -214,11 +215,11 @@ void sortByRating(Restaurant** head) {
         int cur = 0;
         int nex = 0;
 
-        // Procházení seznamu
+        // prochazeni seznamu
         while (current->next != lptr) {
-            // Pokud je jméno aktuálního prvku vìtší ne následujícího, vymìníme je
-            if (current->reviews == NULL) {                    // Pokud restaurace nemá rewie tak je automatiocky
-                                                                //0 -> hroší jak nejmepší hodnocení co je 1
+            // Pokud je jmeno aktualniho prvku vetsi nez nasledujiciho, vymenime je
+            if (current->reviews == NULL) {                    // pokud restaurace nema review tak je automatiocky
+                //0 -> horsi jak nejmensi hodnocení coz je 1
                 cur = 0;
             }
             else {
@@ -232,41 +233,39 @@ void sortByRating(Restaurant** head) {
             }
 
             if (cur < nex) {
-                // Pøehodíme ukazatele mezi current a current->next
+                // prehodime ukazatele mezi current a current->next
 
                 Restaurant* next = current->next;
 
-                // Pokud pøehazujeme na zaèátku seznamu
+                // pokud prehazujeme na zacatku seznamu
                 if (previous == NULL) {
                     *head = next;  // Aktualizujeme hlavu seznamu
                 }
                 else {
-                    previous->next = next;  // Nastavíme pøedchozí uzel tak, aby ukazoval na 'next'
+                    previous->next = next;  // nastavime predchozi uzel tak, aby ukazoval na 'next'
                 }
 
                 current->next = next->next;  // Aktuální prvek nyní ukazuje na uzel po 'next'
                 next->next = current;        // 'next' ukazuje na aktuální prvek
 
-                // Pøehazování ukazatelù je hotové
-                swapped = 1;
+                swapped = 1; //prehazovani je dokonceno
 
-                // Posuneme previous na 'next' (novı pøedek 'current')
-                previous = next;
+                previous = next; // posuneme previous na 'next' (novy predek 'current')
             }
             else {
-                // Posuneme se dál, pokud nebyla vımìna
+                // Posuneme se dal, pokud nebyla vymena
                 previous = current;
                 current = current->next;
             }
         }
-        lptr = current; // Aktualizujeme lptr, poslední prvek je nyní na správném místì
+        lptr = current; // Aktualizujeme lptr, posledni prvek je nyni na spravnem miste
     } while (swapped);
 }
 
-// Funkce pro uloení databáze
+// Funkce pro ulozeni databaze
 void saveDatabase(Restaurant** head) {
     if (head == NULL) {
-        return; // Prázdnı seznam, nic k zapsání
+        return; // prazdny seznam, nic k zapsani
     }
     Restaurant* restaurant;
     restaurant = *head;
@@ -274,20 +273,20 @@ void saveDatabase(Restaurant** head) {
     FILE* databaze = fopen(CestaDatabaze, "w");
     while (restaurant != NULL) {
         Review* review = restaurant->reviews;
-        review = restaurant->reviews; //Pøepne na komentáøe související s aktuální restaurací
+        review = restaurant->reviews; //prepne na komentare souvisejici s aktualni restauraci
         fprintf(databaze, "%s\n", restaurant->name);
         while (review != NULL) {
             fprintf(databaze, "\t%x", review->review);
             fprintf(databaze, "\t%s\n", review->comment);
             review = review->next;
         }
-        restaurant = restaurant->next; //Ukazatel na další restauraci
+        restaurant = restaurant->next; //Ukazatel na dalsi restauraci
     }
     fclose(databaze);
     printf("Databaze ulozena.\n");
 }
 
-// Funkce pro neètení databáze
+// Funkce pro nacteni databaze
 void loadDatabase(Restaurant** head) {
     int pocetRestauraci = 0;
     int pocetHodnoceni = 0;
@@ -299,54 +298,55 @@ void loadDatabase(Restaurant** head) {
     }
     long length;
 
-    // Pøejdeme na konec souboru, abychom zjistili jeho velikost
+    // prejdeme na konec souboru, abychom zjistili jeho velikost
     fseek(vstup, 0, SEEK_END);
     length = ftell(vstup);
-    fseek(vstup, 0, SEEK_SET);  // Vrame se zpìt na zaèátek souboru
+    fseek(vstup, 0, SEEK_SET);  // vratime se zpet na zacatek souboru
 
-    if (length != 0) {
-        // Alokování pamìti pro buffer
-        char* databaze = (char*)malloc(length + 1);  // +1 pro nulovı terminátor
+    // alokovani pameti pro buffer
+    char* databaze = (char*)malloc(length + 1);  // +1 pro nulovy terminator
 
-        // Ètení souboru do bufferu
-        size_t bytesRead = fread(databaze, 1, length, vstup);
-        databaze[bytesRead] = '\0';  // Pøidání nulového terminátoru na konec pøeètenıch dat
+    // cteni souboru do bufferu
+    size_t bytesRead = fread(databaze, 1, length, vstup);
+    databaze[bytesRead] = '\0';  // pridani nul. termin. na konec prectenych dat
 
-        // Funkce pro ukládání
-        // Rozdìlení øetìzce na jednotlivé øádky
-        char* line = strtok(databaze, "\n");
-        while (line != NULL) {
-            if (line[0] == '\t') {
-                int rating = line[1] - 48; // Proè -48? èíslice se pøepíšou na ASCII znak, kde 1 se pøepíše na 49...takto vrátíme 49 zpìt na 1
-                char comment[MAX_COMMENT_LEN];
-                strcpy(comment, line + 3);
-                addReview(*head, rating, comment, 0); // 0 na konci øíká, e funkce nebude tisknout info
-                line = strtok(NULL, "\n");  // Získání dalšího øádku
-                pocetHodnoceni += 1;
-            }
-            else {
-                addRestaurant(head, line, 0);  // Pøidání názvu restaurace do seznamu,   0 na konci øíká, e funkce nebude tisknout info
-                line = strtok(NULL, "\n");  // Získání dalšího øádku
-                pocetRestauraci += 1;
-            }
+    // Funkce pro ukladani
+    // rozdeleni retezce na jednotlive radky
+    char* line = strtok(databaze, "\n");
+    while (line != NULL) {
+        if (line[0] == '\t') {
+            int rating = line[1] - 48; // Proè -48? cislice se z nejakeho duvodu prepisou na ASCII znak, kde 1 se prepise na 49...takto vratime 49 zpet na 1
+            char comment[MAX_COMMENT_LEN];
+            strcpy(comment, line + 3);
+            addReview(*head, rating, comment, 0); // 0 na konci rika, ze funkce nebude tisknout info
+            line = strtok(NULL, "\n");  // ziskani dalsiho radku
+            pocetHodnoceni += 1;
         }
-        system("cls");
-        switch (pocetRestauraci)
-        {
-        case 1:
-            printf("Byla nactena 1 restaurace a %d hodnoceni.\n", pocetHodnoceni);
-            break;
-        case 2:
-            printf("Byly nacteny %d restaurace a %d hodnoceni.\n", pocetRestauraci, pocetHodnoceni);
-            break;
-        case 3:
-            printf("Byly nacteny %d restaurace a %d hodnoceni.\n", pocetRestauraci, pocetHodnoceni);
-            break;
-        default:
-            printf("Bylo nacteno %d restauraci a %d hodnoceni.\n", pocetRestauraci, pocetHodnoceni);
-            break;
+        else {
+            addRestaurant(head, line, 0);  // pridani nazvu restaurace do seznamu,   0 na konci rika, ze funkce nebude tisknout info
+            line = strtok(NULL, "\n");  // ziskani dalsiho radku
+            pocetRestauraci += 1;
         }
-        free(databaze);
     }
+    system("cls");
+    switch (pocetRestauraci)
+    {
+    case 1:
+        printf("Byla nactena 1 restaurace a %d hodnoceni.\n", pocetHodnoceni);
+        break;
+    case 2:
+        printf("Byly nacteny %d restaurace a %d hodnoceni.\n", pocetRestauraci, pocetHodnoceni);
+        break;
+    case 3:
+        printf("Byly nacteny %d restaurace a %d hodnoceni.\n", pocetRestauraci, pocetHodnoceni);
+        break;
+    default:
+        printf("Bylo nacteno %d restauraci a %d hodnoceni.\n", pocetRestauraci, pocetHodnoceni);
+        break;
+    }
+
+
     fclose(vstup);
+    free(databaze);
+
 }
