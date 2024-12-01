@@ -1,0 +1,8 @@
+Nazev:
+Databaze restauracnich zarizeni
+
+Autori:
+Dan Juroska, Ana Hruskova
+
+Popis:
+Databaze restauraci v cr. V databazi lze pridavat a mazat restaurace, a jejich hodnoceni 1-5 a komentare a serazovat je abecedne a podle hodnoceni.
